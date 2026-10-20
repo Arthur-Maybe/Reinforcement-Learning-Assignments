@@ -1,0 +1,48 @@
+DETAILED BREAKDOWN OF AI CONTRIBUTIONS
+================================================
+
+1. Gymnasium Integration & Environment Customization
+----------------------------------------------------
+- Continuous State Discretization: Designed StateDiscretizer in
+  utils/discretizer.py to map continuous observations (CartPole-v1 and
+  MountainCar-v0) into discrete tuple keys for tabular Q-table lookups.
+
+- Robotic Arm Domain Adaptation: Adapted the Assignment 1 2-DOF robotic arm
+  environment (RobotArmEnv) to map MultiDiscrete([3,3,2]) action spaces into
+  single integer indices (0 to 17) and convert observation arrays to rounded
+  state tuple keys.
+
+- Non-Deterministic Domain: Built RobotArmNDEnv with a 10% action failure
+  probability (stay-put transitions) for Part (b)(ii).
+
+
+2. Debugging & Performance Optimization
+---------------------------------------
+- State Space Tuning: Identified state oversaturation issues in CartPole-v1
+  and refined discretization binning (1 x 1 x 6 x 12) to enable fast
+  convergence.
+
+- Bootstrapping Fix: Diagnosed a Q-value update bug caused by confusing
+  Gymnasium's "terminated" and "truncated" episode end signals during model
+  planning.
+
+
+3. Documentation & Report Generation (README.md)
+------------------------------------------------
+- Markdown Formatting: Structured the complete README.md report, including
+  project layout, dependencies (requirements.txt), and CLI command usage.
+
+- Data Presentation: Formatted benchmark results into clean Markdown tables
+  summarizing episodes to convergence and final average steps per episode
+  across planning steps n = 0, 5, 10, 20, 50.
+
+- Comparative Analysis: Assisted in drafting technical discussions regarding
+  sample efficiency gains, queue dynamics in Prioritized Sweeping, and the
+  sparse reward exploration bottleneck in MountainCar-v0.
+
+
+STUDENT DECLARATION
+===================
+I confirm that all code was executed locally, outputs were collected through
+empirical runs on my machine, and all submitted work reflects my full
+understanding of the implemented algorithms and results.
