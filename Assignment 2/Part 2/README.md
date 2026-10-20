@@ -25,16 +25,15 @@
 
 ---
 
-## Part (b)(ii): Non-Deterministic Domain ("robotic manipulation nd")
-Actions fail with probability $0.1$ (resulting in no state change), requiring the agent to build a stochastic transition model $\hat{P}(s' \mid s, a)$ using normalized empirical transition frequencies.
+### Part (b)(ii): Non-Deterministic Robotic Arm Domain ("robotic manipulation nd")
 
-| Algorithm | Planning Steps ($n$) | Avg Steps/Episode (Final) | Episodes to First Near-Optimal Performance |
+| Algorithm | Planning Steps ($n$) | Episodes to Convergence | Final Avg Steps/Episode |
 | :--- | :--- | :--- | :--- |
-| **Stochastic Dyna-Q** | $n = 0$ | ~5.5 | ~140 |
-| **Stochastic Dyna-Q** | $n = 5$ | ~5.5 | ~85 |
-| **Stochastic Dyna-Q** | $n = 10$ | ~5.5 | ~52 |
-| **Stochastic Dyna-Q** | $n = 20$ | ~5.5 | ~32 |
-| **Stochastic Dyna-Q** | $n = 50$ | ~5.5 | ~16 |
+| **Stochastic Dyna-Q** | $n = 0$ | 125 | 6.7 |
+| **Stochastic Dyna-Q** | $n = 5$ | 97 | 5.4 |
+| **Stochastic Dyna-Q** | $n = 10$ | 88 | 5.4 |
+| **Stochastic Dyna-Q** | $n = 20$ | 81 | 5.7 |
+| **Stochastic Dyna-Q** | $n = 50$ | 88 | 6.6 |
 
 ---
 
@@ -42,3 +41,6 @@ Actions fail with probability $0.1$ (resulting in no state change), requiring th
 1. **Sample Efficiency**: In both deterministic and non-deterministic domains, increasing $n$ dramatically accelerates learning by propagating goal rewards backward through the model without requiring real environment interactions.
 2. **Prioritized Sweeping vs. Dyna-Q**: Prioritized Sweeping focuses simulated updates strictly on state-action pairs with high top-level queue priorities ($|\delta| > \theta$), achieving optimal policies in roughly half the number of episodes required by standard Dyna-Q.
 3. **Robustness to Stochastic Dynamics**: The count-based transition distribution estimator enables Dyna-Q to learn accurate $Q$-values without making false deterministic assumptions during model planning.
+
+# Commands
+python main.py --part a --n 0 10 50
