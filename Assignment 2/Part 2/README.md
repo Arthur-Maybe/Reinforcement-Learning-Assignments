@@ -3,7 +3,7 @@
 ## 1. Directory Structure
 
 ```text
-rl_assignment_2/
+Part 2/
 ├── agents/                         # RL algorithm implementations
 │   ├── __init__.py
 │   ├── dyna_q.py                   # Tabular Dyna-Q (Deterministic)
